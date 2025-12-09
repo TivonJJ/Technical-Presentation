@@ -1,0 +1,18 @@
+{
+    "name": "agent-evolution-new",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "slidev slides.md",
+        "build": "slidev build slides.md",
+        "export": "slidev export slides.md"
+    },
+    "devDependencies": {
+        "@iconify-json/carbon": "^1.2.15",
+        "@iconify-json/logos": "^1.2.10",
+        "@iconify-json/mdi": "^1.2.3",
+        "@slidev/cli": "^52.10.1",
+        "medium-zoom": "^1.1.0",
+        "slidev-theme-penguin": "^2.3.1",
+        "unplugin-icons": "^22.5.0"
+    }
+}
