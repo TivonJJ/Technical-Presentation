@@ -13,6 +13,9 @@ build/
 .vercel/
 .netlify/
 
+# Exports
+exports/
+
 # Slidev
 .slidev/
 components/

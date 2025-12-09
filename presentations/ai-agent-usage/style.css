@@ -1,0 +1,37 @@
+/* Spec-Driven AI 演讲的专属样式 */
+
+:root {
+    --primary: #10b981;
+    --secondary: #3b82f6;
+}
+
+h1 {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.slidev-layout {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* 自定义卡片样式 */
+.spec-card {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.spec-card:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    transform: scale(1.02);
+}
+
+/* 代码块样式 */
+code {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
