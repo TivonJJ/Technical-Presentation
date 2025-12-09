@@ -7,21 +7,37 @@ layout: default
 <div class="grid grid-cols-2 gap-12 mt-12">
 
 <div class="space-y-4">
-  <div v-click class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
+    class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
     <carbon-warning class="text-red-400 text-xl" />
     <span>向量检索不精准，容易召回噪声</span>
   </div>
-  <div v-click class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500, delay: 100 } }"
+    class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
     <carbon-cut class="text-red-400 text-xl" />
     <span>文档切片（Chunking）导致上下文结构丢失</span>
   </div>
-  <div v-click class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500, delay: 200 } }"
+    class="glass-card p-4 flex items-center gap-3 border-l-2 !border-l-red-500/50">
     <carbon-network-2 class="text-red-400 text-xl" />
     <span>缺乏实体间关系，难以进行多跳推理</span>
   </div>
 </div>
 
-<div v-click class="glass-card p-6 bg-red-500/5 border border-red-500/20">
+<div v-click 
+  v-motion
+  :initial="{ opacity: 0, x: 50 }"
+  :enter="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+  class="glass-card p-6 bg-red-500/5 border border-red-500/20">
   <h3 class="text-lg font-bold text-red-300 mb-4">典型案例：切片导致的语义断裂</h3>
   
   <div class="text-sm opacity-80 mb-2">原文：</div>

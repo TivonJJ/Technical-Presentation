@@ -7,27 +7,43 @@ layout: default
 <div class="grid grid-cols-2 gap-6 mt-4 items-start">
 
 <div class="space-y-3">
-  <div v-click class="glass-card p-4 border-l-4 !border-l-blue-500">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
+    class="glass-card p-4 border-l-4 !border-l-blue-500">
     <h3 class="text-base font-bold mb-1 flex items-center gap-2">
       <carbon-time class="text-blue-400"/> 无长期记忆
     </h3>
     <p class="opacity-80 text-sm">LLM 本身不存储之前的对话状态，每一次交互都是独立的。</p>
   </div>
 
-  <div v-click class="glass-card p-4 border-l-4 !border-l-purple-500">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500, delay: 100 } }"
+    class="glass-card p-4 border-l-4 !border-l-purple-500">
     <h3 class="text-base font-bold mb-1 flex items-center gap-2">
       <carbon-data-view-alt class="text-purple-400"/> 依赖当前窗口
     </h3>
     <p class="opacity-80 text-sm">所有的"记忆"都必须作为 Input (Prompt) 的一部分传入。</p>
   </div>
 
-  <div v-click class="p-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg text-center font-bold text-sm">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, scale: 0.8 }"
+    :enter="{ opacity: 1, scale: 1, transition: { duration: 500 } }"
+    class="p-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg text-center font-bold text-sm">
     Context = 模型做判断的"全部输入信息"
   </div>
 </div>
 
 <div class="relative">
-  <div v-click class="relative">
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: 50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+    class="relative">
     <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30"></div>
     <!-- 可滚动的图片容器 -->
     <div class="relative rounded-lg shadow-2xl border border-white/10 overflow-y-auto overflow-x-hidden max-h-96 bg-gray-900/30 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800">

@@ -139,7 +139,7 @@ GraphRAG 做了什么？
 ### 扩展
 RAG 非常适合知识库类，AI客服类场景。 甚至我们可以提供SDK文档和一些Demo代码，让LLM根据我们的这些文档和代码生成对接代码甚至任何语言的代码。
 但是它并不适合一些严谨的场景，比如一些明确的Action，它本质上还是一个检索工具。
-早期的cursor版本里面的Code Embedding功能，就是基于RAG的一个应用场景，但是那会儿代码生成质量并不高，而且幻觉特别多，之后anthropic最先在Coding Agent中抛弃了Rag概念
+早期版本的Cursor/Copilot里面的Code Embedding功能，就是基于RAG的一个应用场景，但是那会儿代码生成质量并不高，而且幻觉特别多，之后anthropic最先在Coding Agent中抛弃了Rag概念
 使用了search,grep等工具精准的定位代码，(模拟了人类真实开发路径)。之后市面上很多AI Coding Agent都开始使用这种模式,所以现在越来越精准
 
 ## 大模型如何访问外部数据与执行外部动作

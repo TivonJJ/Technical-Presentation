@@ -4,13 +4,48 @@ layout: default
 
 # Function Calling 流程图
 
-<div class="flex items-center justify-center h-[80%]">
-  <img src="/imgs/function_calling_flow.png" class="max-h-full rounded-lg shadow-2xl border border-white/10" />
+<div class="grid grid-cols-3 gap-6 mt-4 h-[75vh]">
+  
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: -50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+    class="col-span-2 flex">
+    <div class="max-h-[430px]  max-w-full overflow-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800 rounded-lg">
+      <img src="/imgs/function_calling_flow.png" class="w-auto h-full max-w-full rounded-lg shadow-2xl border border-white/10" />
+    </div>
+  </div>
+
+  <div v-click 
+    v-motion
+    :initial="{ opacity: 0, x: 50 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+    class="flex flex-col gap-3">
+    <div class="glass-card p-3 text-center border-l-4 !border-l-green-500">
+      <div class="text-green-400 text-xl mb-1">✅</div>
+      <div class="font-bold text-sm text-green-400">稳定</div>
+      <div class="text-xs opacity-70 mt-1">结构化输出</div>
+    </div>
+    <div class="glass-card p-3 text-center border-l-4 !border-l-green-500">
+      <div class="text-green-400 text-xl mb-1">✅</div>
+      <div class="font-bold text-sm text-green-400">安全</div>
+      <div class="text-xs opacity-70 mt-1">权限可控</div>
+    </div>
+    <div class="glass-card p-3 text-center border-l-4 !border-l-green-500">
+      <div class="text-green-400 text-xl mb-1">✅</div>
+      <div class="font-bold text-sm text-green-400">可控</div>
+      <div class="text-xs opacity-70 mt-1">系统执行</div>
+    </div>
+    <div class="glass-card p-3 text-center border-l-4 !border-l-green-500">
+      <div class="text-green-400 text-xl mb-1">✅</div>
+      <div class="font-bold text-sm text-green-400">开发者友好</div>
+      <div class="text-xs opacity-70 mt-1">易于集成</div>
+    </div>
+  </div>
+
 </div>
 
-<div class="text-center text-sm opacity-50 mt-4">
-  用户请求 → LLM 识别意图 → 生成函数调用 → 系统执行 → 返回结果 → LLM 生成回复
-</div>
+
 
 <!--
 这张图展示了 Function Calling 的完整流程：
