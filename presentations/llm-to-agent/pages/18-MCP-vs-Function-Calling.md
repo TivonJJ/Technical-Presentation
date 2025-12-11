@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# MCP vs Function Calling
+# MCP & Function Calling
 
 <div class="mt-12 glass-card !p-0 overflow-hidden text-sm">
 

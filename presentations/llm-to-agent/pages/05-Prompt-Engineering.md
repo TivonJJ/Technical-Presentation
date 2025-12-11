@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Prompt Engineering
+# Prompt
 
 <div class="grid grid-cols-2 gap-8 mt-12 h-[60%]">
 

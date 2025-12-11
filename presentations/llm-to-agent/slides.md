@@ -9,6 +9,34 @@ transition: slide-left
 mdc: true
 ---
 
+<div class="h-full w-full flex flex-col justify-center items-center text-center">
+<div v-motion
+  :initial="{ opacity: 0, y: 50 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 1000 } }">
+  <h1 class="text-6xl mb-4 font-extrabold !leading-tight">
+    现代 <span class="text-gradient">AI 架构</span> 演进
+  </h1>
+</div>
+<div v-motion
+  :initial="{ opacity: 0 }"
+  :enter="{ opacity: 1, transition: { delay: 500, duration: 1000 } }">
+  <p class="text-2xl text-gray-300 font-light tracking-widest uppercase">
+    从 LLM 到 Agent 的能力扩展路径
+  </p>
+</div>
+<div class="absolute bottom-8 left-0 right-0 flex justify-center">
+  <div class="avatar-container">
+    <div class="avatar-ring"></div>
+    <div 
+      @click="$slidev.nav.next()" 
+      class="avatar-core hover:scale-110 transition duration-300 cursor-pointer"
+    >
+      <span class="text-xs font-bold text-white drop-shadow-md">Go!</span>
+    </div>
+  </div>
+</div>
+</div>
+
 ---
 src: ./pages/01-今天我们要讨论的核心内容.md
 ---
@@ -106,22 +134,26 @@ src: ./pages/24-Multi-Agent-协作.md
 ---
 
 ---
-src: ./pages/25-A2A-协议-Agentic-应用.md
+src: ./pages/25-A2A-协议.md
 ---
 
 ---
-src: ./pages/26-Agent-开发工具.md
+src: ./pages/26-Agentic-应用.md
 ---
 
 ---
-src: ./pages/27-总结从-LLM-到-Agent.md
+src: ./pages/27-Agent-开发工具.md
 ---
 
 ---
-src: ./pages/28-技术演进解决的三个核心问题.md
+src: ./pages/28-总结从-LLM-到-Agent.md
 ---
 
 ---
-src: ./pages/29-谢谢.md
+src: ./pages/29-技术演进解决的三个核心问题.md
+---
+
+---
+src: ./pages/30-谢谢.md
 ---
 

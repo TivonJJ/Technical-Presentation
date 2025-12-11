@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 传统 RAG 存在的缺陷
+# RAG 存在的缺陷
 
 <div class="grid grid-cols-2 gap-12 mt-12">
 

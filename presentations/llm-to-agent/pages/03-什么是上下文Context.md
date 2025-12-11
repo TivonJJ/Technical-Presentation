@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Context Window
+# Context Engineering
 
 <div class="grid grid-cols-2 gap-6 mt-4 items-start">
 

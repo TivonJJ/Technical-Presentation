@@ -14,7 +14,7 @@ layout: default
 
 <div class="grid grid-cols-2 gap-6 mb-3">
 
-<div v-click 
+<div v-click="1"
   v-motion
   :initial="{ opacity: 0, x: -50 }"
   :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
@@ -43,7 +43,7 @@ layout: default
   </div>
 </div>
 
-<div v-click 
+<div v-click="2"
   v-motion
   :initial="{ opacity: 0, x: 50 }"
   :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
@@ -62,7 +62,19 @@ layout: default
 
 </div>
 
-<div v-click 
+<!-- ReAct 流程图 - 先显示 -->
+<div v-click="3"
+  v-show="$slidev.nav.clicks === 3"
+  v-motion
+  :initial="{ opacity: 0, scale: 0.8 }"
+  :enter="{ opacity: 1, scale: 1, transition: { duration: 600 } }"
+  :leave="{ opacity: 0, scale: 0.8, transition: { duration: 400 } }"
+  class="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm">
+  <img src="/imgs/llm-ReAct-flow.gif" alt="ReAct Flow" class="max-w-4xl max-h-[80vh] rounded-lg shadow-2xl" />
+</div>
+
+<!-- 缺点提示 - 图片关闭后显示 -->
+<div v-click="4"
   v-motion
   :initial="{ opacity: 0, y: 30 }"
   :enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"

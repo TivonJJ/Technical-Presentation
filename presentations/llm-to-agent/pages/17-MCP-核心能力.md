@@ -4,9 +4,19 @@ layout: default
 
 # MCP 核心能力
 
-<div class="grid grid-cols-3 gap-6 mt-12">
+<div v-motion
+  :initial="{ opacity: 0 }"
+  :enter="{ opacity: 1, transition: { duration: 500 } }"
+  class="text-center text-sm opacity-60 -mt-4 mb-8">
+  Anthropic 于 2024年11月 发布
+</div>
 
-<div class="glass-card p-6 text-center hover:bg-blue-500/10 transition duration-300">
+<div class="grid grid-cols-3 gap-6 mt-8">
+
+<div v-click v-motion
+  :initial="{ opacity: 0, x: -50 }"
+  :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
+  class="glass-card p-6 text-center hover:bg-blue-500/10 transition duration-300">
   <div class="w-16 h-16 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-6">
     <carbon-api class="text-3xl text-blue-400" />
   </div>
@@ -14,7 +24,10 @@ layout: default
   <p class="text-sm opacity-70">标准化工具定义和注册方式，一次编写，到处运行。</p>
 </div>
 
-<div class="glass-card p-6 text-center hover:bg-green-500/10 transition duration-300">
+<div v-click v-motion
+  :initial="{ opacity: 0, y: 50 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+  class="glass-card p-6 text-center hover:bg-green-500/10 transition duration-300">
   <div class="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6">
     <carbon-folder class="text-3xl text-green-400" />
   </div>
@@ -22,7 +35,10 @@ layout: default
   <p class="text-sm opacity-70">文件系统、数据库、API 资源的标准访问接口。</p>
 </div>
 
-<div class="glass-card p-6 text-center hover:bg-purple-500/10 transition duration-300">
+<div v-click v-motion
+  :initial="{ opacity: 0, x: 50 }"
+  :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
+  class="glass-card p-6 text-center hover:bg-purple-500/10 transition duration-300">
   <div class="w-16 h-16 mx-auto bg-purple-500/20 rounded-full flex items-center justify-center mb-6">
     <carbon-connection-signal class="text-3xl text-purple-400" />
   </div>
@@ -32,6 +48,9 @@ layout: default
 
 </div>
 
-<div class="mt-8 text-center text-sm opacity-50">
+<div v-after v-motion
+  :initial="{ opacity: 0, y: 20 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+  class="mt-8 text-center text-sm opacity-50">
   例如：PostgreSQL MCP Server • Filesystem MCP Server • Slack MCP Server
 </div>

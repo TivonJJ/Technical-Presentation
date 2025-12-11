@@ -2,9 +2,6 @@
     "name": "agent-evolution-new",
     "version": "1.0.0",
     "scripts": {
-        "dev": "slidev slides.md",
-        "build": "slidev build slides.md",
-        "export": "slidev export slides.md",
         "dev:llm": "cd presentations/llm-to-agent && slidev slides.md",
         "dev:usage": "cd presentations/ai-agent-usage && slidev slides.md",
         "build:llm": "cd presentations/llm-to-agent && slidev build slides.md --out ../../dist/llm-to-agent",

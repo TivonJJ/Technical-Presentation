@@ -2,6 +2,10 @@
 layout: default
 ---
 
+<script setup>
+import ZoomableImageModal from '../components/ZoomableImageModal.vue'
+</script>
+
 <h1 
   v-motion
   :initial="{ opacity: 0, y: -30 }"
@@ -47,17 +51,10 @@ layout: default
 
 </div>
 
-<div 
-  v-click
-  v-motion
-  :initial="{ opacity: 0, scale: 0.3 }"
-  :enter="{ opacity: 1, scale: 1, transition: { duration: 600, type: 'spring', bounce: 0.2 } }"
-  :leave="{ opacity: 0, scale: 0.3, transition: { duration: 400 } }"
-  class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-8">
-  <div class="relative">
-    <img src="/imgs/plan-and-execute.png" class="max-w-[900px] max-h-[500px] object-cover rounded-lg shadow-2xl border border-white/20" />
-    <div class="absolute top-4 right-4 text-white/60 text-sm">
-      点击任意位置关闭
-    </div>
-  </div>
+<div v-click>
+  <ZoomableImageModal 
+    visible
+    src="/imgs/plan-and-execute.png"
+    alt="Plan & Execute 流程图"
+  />
 </div>
