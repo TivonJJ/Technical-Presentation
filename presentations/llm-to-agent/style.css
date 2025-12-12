@@ -11,6 +11,10 @@
     --neon-glow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
+html {
+    font-size: 15px; /* globally scale down rem-based sizes ~6% */
+}
+
 html,
 body {
     background-color: var(--slidev-theme-bg);
@@ -24,6 +28,7 @@ body {
         radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 20%);
     transition: all 0.5s ease-in-out;
+    line-height: 1.32;
 }
 
 /* Glassmorphism Cards */
@@ -209,4 +214,118 @@ kbd {
   justify-content: center;
   border: 2px solid rgba(255, 255, 255, 0.5);
   animation: breathe-glow 3s ease-in-out infinite;
+}
+
+/* Layered animated background for local layouts */
+.aurora {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  filter: blur(90px) saturate(140%);
+  opacity: 0.9;
+  transform: translateZ(0);
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+.aurora-1 {
+  background:
+    radial-gradient(45% 55% at 18% 20%, rgba(56, 189, 248, 0.28), transparent 60%),
+    radial-gradient(40% 60% at 72% 28%, rgba(168, 85, 247, 0.24), transparent 65%);
+}
+
+.aurora-2 {
+  background:
+    radial-gradient(50% 55% at 82% 75%, rgba(244, 63, 94, 0.18), transparent 62%),
+    radial-gradient(35% 55% at 30% 82%, rgba(34, 211, 238, 0.20), transparent 65%);
+  animation-duration: 24s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate(-2%, -1%) scale(1); }
+  50% { transform: translate(2%, 1%) scale(1.05); }
+  100% { transform: translate(1%, -2%) scale(1.08); }
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: -20%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  mix-blend-mode: overlay;
+  opacity: 0.04;
+  animation: noise-shift 1.6s steps(2) infinite;
+}
+
+@keyframes noise-shift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(2%, -1%); }
+}
+
+/* Typography & rhythm */
+.slidev-layout h1 {
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.slidev-layout h2 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.slidev-layout h3 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.slidev-layout p {
+  color: #cbd5e1;
+  margin-block: 0.35rem;
+}
+
+.slidev-layout strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.slidev-layout ul,
+.slidev-layout ol {
+  margin-block: 0.35rem;
+}
+
+.slidev-layout li {
+  margin-block: 0.15rem;
+}
+
+.slidev-layout ul li::marker,
+.slidev-layout ol li::marker {
+  color: rgba(56, 189, 248, 0.9);
+}
+
+a {
+  color: var(--slidev-theme-primary);
+  text-decoration-color: rgba(56, 189, 248, 0.4);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration-color: rgba(168, 85, 247, 0.8);
+  text-shadow: var(--neon-glow);
 }
