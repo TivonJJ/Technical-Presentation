@@ -1,16 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useSlideContext } from '@slidev/client'
 
-const step = ref(0)
-const maxSteps = 8
-
-const next = () => {
-  if (step.value < maxSteps) {
-    step.value++
-  } else {
-    step.value = 0
+const props = defineProps({
+  startClicks: {
+    type: Number,
+    default: 1
   }
-}
+})
+
+const { $clicks } = useSlideContext()
+
+const maxSteps = 10
+const step = computed(() => {
+  if (!$clicks) return 0
+  const current = $clicks.value - props.startClicks
+  if (current < 0) return 0
+  if (current > maxSteps) return maxSteps
+  return current
+})
 
 // Diagram Configuration
 // Order: User | Function | OpenAI Server | Model API
@@ -24,8 +32,8 @@ const actors = [
 const getX = (actorId: string) => {
   const index = actors.findIndex(a => a.id === actorId)
   const count = actors.length
-  // Distribute across 600px width
-  return (index + 0.5) * (600 / count)
+  // Distribute across 800px width
+  return (index + 0.5) * (800 / count)
 }
 
 // Sequence Messages
@@ -61,7 +69,7 @@ const getArrowStyle = (msg: any) => {
   <div class="w-full h-[380px] flex flex-col bg-slate-900/50 rounded-xl overflow-visible border border-slate-700 select-none">
     
     <!-- Diagram Area -->
-    <div class="flex-1 relative cursor-pointer group overflow-hidden" @click="next">
+    <div class="flex-1 relative cursor-pointer group overflow-hidden">
       
       <!-- Actors Header -->
       <div v-for="actor in actors" :key="actor.id"
@@ -77,7 +85,7 @@ const getArrowStyle = (msg: any) => {
       </div>
 
       <!-- Messages Layer -->
-      <div class="absolute inset-0 top-0 w-[600px]">
+      <div class="absolute inset-0 top-0 w-[800px]">
         <template v-for="msg in messages" :key="msg.step">
             <!-- Message Container (Fixed Position) -->
             <div v-if="step >= msg.step"
@@ -123,11 +131,29 @@ const getArrowStyle = (msg: any) => {
         </template>
       </div>
       
-      <!-- Click Hint -->
-      <div v-if="step < maxSteps" class="absolute bottom-2 right-4 text-[10px] text-slate-600 animate-pulse">
-        Click to next
+      <!-- Highlights Layer -->
+      <!-- Function Calling Box (Step 9) -->
+      <div v-if="step >= 9" 
+           class="absolute top-[80px] border-2 border-red-500 rounded-lg bg-red-500/10 z-30 animate-simple-fade"
+           :style="{
+              left: `${getX('server')}px`,
+              width: `${getX('api') - getX('server')}px`,
+              height: '270px'
+           }">
+           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-red-400 text-xs px-2 font-bold whitespace-nowrap">Function Calling</div>
       </div>
 
+      <!-- MCP Box (Step 10) -->
+      <div v-if="step >= 10" 
+           class="absolute top-[80px] border-2 border-purple-500 rounded-lg bg-purple-500/10 z-30 animate-simple-fade"
+           :style="{
+              left: `${getX('func')}px`,
+              width: `${getX('server') - getX('func')}px`,
+              height: '270px'
+           }">
+           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-purple-400 text-xs px-2 font-bold">MCP</div>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -165,5 +191,14 @@ const getArrowStyle = (msg: any) => {
 
 .fade-in {
     animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes simpleFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-simple-fade {
+    animation: simpleFade 0.5s ease-out forwards;
 }
 </style>
