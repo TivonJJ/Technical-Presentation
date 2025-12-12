@@ -2,9 +2,20 @@
 layout: default
 ---
 
+<script setup>
+import ZoomableImageModal from '../components/ZoomableImageModal.vue'
+import McpVsFcSequence from '../components/McpVsFcSequence.vue'
+
+</script>
+
 # MCP & Function Calling
 
-<div class="mt-12 glass-card !p-0 overflow-hidden text-sm">
+<div 
+  v-if="$clicks !== 1"
+  v-motion
+  :initial="{ opacity: 0, y: 30 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+  class="mt-12 glass-card !p-0 overflow-hidden text-sm">
 
 | 特性 | Function Calling | MCP |
 |------|-----------------|-----|
@@ -16,7 +27,18 @@ layout: default
 
 </div>
 
-<div class="mt-8 p-4 bg-blue-500/10 rounded-lg flex items-center gap-4">
+<div v-click="1" v-if="$clicks === 1"   v-motion
+  :initial="{ opacity: 0, scale: 0.95 }"
+  :enter="{ opacity: 1, scale: 1, transition: { duration: 400 } }">
+  <McpVsFcSequence />
+</div>
+
+<div 
+  v-click="2"
+  v-motion
+  :initial="{ opacity: 0, scale: 0.95 }"
+  :enter="{ opacity: 1, scale: 1, transition: { duration: 400 } }"
+  class="mt-8 p-4 bg-blue-500/10 rounded-lg flex items-center gap-4">
   <carbon-idea class="text-blue-400 text-xl" />
   <span>它们并非二选一，而是互补：LLM 通过 Function Calling 能力去调用 MCP Server 提供的工具。</span>
 </div>
