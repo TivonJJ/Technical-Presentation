@@ -7,6 +7,7 @@ info: |
 author: Your Name
 transition: slide-left
 mdc: true
+layout: cover-dynamic
 ---
 
 <div class="h-full w-full flex flex-col justify-center items-center text-center">
